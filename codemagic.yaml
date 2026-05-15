@@ -20,4 +20,4 @@ workflows:
           flutter build ipa --release --no-codesign
 
     artifacts:
-      - scannerV2/scannerV2/build/ios/ipa/*.ipa
+      - scannerV2/scannerV2/build/ios/**/*.ipa
