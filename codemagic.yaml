@@ -1,13 +1,23 @@
-scripts:
-  - name: Get Flutter packages
-    script: |
-      cd scannerV2/scannerV2
-      flutter pub get
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini_m2
+    max_build_duration: 60
 
-  - name: Build IPA
-    script: |
-      cd scannerV2/scannerV2
-      flutter build ipa --release --no-codesign
+    environment:
+      flutter: stable
+      xcode: latest
 
-artifacts:
-  - scannerV2/scannerV2/build/ios/ipa/*.ipa
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          cd scannerV2/scannerV2
+          flutter pub get
+
+      - name: Build IPA
+        script: |
+          cd scannerV2/scannerV2
+          flutter build ipa --release --no-codesign
+
+    artifacts:
+      - scannerV2/scannerV2/build/ios/ipa/*.ipa
