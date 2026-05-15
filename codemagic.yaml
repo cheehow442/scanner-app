@@ -14,16 +14,10 @@ workflows:
           cd scannerV2/scannerV2
           flutter pub get
 
-      - name: Build unsigned iOS archive
+      - name: Build IPA
         script: |
           cd scannerV2/scannerV2
-          flutter build ios --release --no-codesign
-
-      - name: Copy archive to artifacts folder
-        script: |
-          mkdir -p artifacts
-          cp -R scannerV2/scannerV2/build/ios/iphoneos/Runner.app artifacts/
-          ls -la artifacts
+          flutter build ipa --release
 
     artifacts:
-      - artifacts/Runner.app
+      - scannerV2/scannerV2/build/ios/ipa/*.ipa
