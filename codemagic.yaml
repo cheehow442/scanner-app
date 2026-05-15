@@ -19,5 +19,9 @@ workflows:
           cd scannerV2/scannerV2
           flutter build ipa --release --no-codesign
 
+      - name: Find IPA file
+        script: |
+          find . -name "*.ipa"
+
     artifacts:
-      - scannerV2/scannerV2/build/ios/**/*.ipa
+      - scannerV2/scannerV2/build/ios/ipa/Runner-unsigned.ipa
